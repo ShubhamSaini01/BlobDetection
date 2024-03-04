@@ -1,12 +1,18 @@
 cmake_minimum_required(VERSION 3.14)
 project(blob_detection)
+if(WIN32)
+# Windows-specific settings or commands
+    message("Inititing blob detection project for Windows")
+elseif(UNIX AND NOT APPLE)
+    message("Inititing blob detection project for Linux")
+else()
+    message(FATAL_ERROR "Configuring Not supported")
+endif()
+
+
 set(CMAKE_CXX_STANDARD 17)
-# Set the path to OpenCV libraries
-# set(OpenCV_DIR /mnt/d/CppDev/opencv/)
-# Set the include directories for OpenCV
-find_package(OpenCV REQUIRED)
-include_directories( ${OpenCV_INCLUDE_DIRS} ${PROJECT_SOURCE_DIR}/include)
-message(${PROJECT_SOURCE_DIR}/include/)
-file(GLOB sources  ${PROJECT_SOURCE_DIR}/src/*.cpp ${PROJECT_SOURCE_DIR}/include/*.h)
-add_executable(blob_detection ${sources} )
-target_link_libraries(blob_detection ${OpenCV_LIBS} )
+
+add_subdirectory(src)
+add_subdirectory(utils)
+add_subdirectory(blob)
+

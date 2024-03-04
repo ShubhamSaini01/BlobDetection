@@ -1,7 +1,7 @@
 #include "blobDetection.h"
 int main(int argc, char const *argv[])
 {
-    std::cout<<"Blob Detection Begins !! /n";
+    std::cout<<"Blob Detection Begins !! \n";
     // Check if there are command line arguments
     std::string inputPath;
     std::string outputPath;

@@ -1,7 +1,12 @@
 #pragma once
 #include<iostream>
-#include <bits/stdc++.h>
+#include <vector>
+#define C1 20
+#define C2 20
+#define R1 20
+#define R2 20
 using std::vector;
+using std::cout;
 namespace helper{
     vector<vector<int>>  conv2d(vector<vector<int>> src,vector<vector<int>> kernel){
         vector<vector<int>> dst=src;
@@ -14,7 +19,7 @@ namespace helper{
                     for (size_t l = 0; l < kernel.size(); l++){
                         int x = j - dx + l;
                         int y = i - dy + k;
-                        if (x >= 0 && x < src.cols && y >= 0 && y < src.rows)
+                        if (x >= 0 && x < src.size() && y >= 0 && y < src[0].size())
                             tmp += src[y, x] * kernel[k, l];
                     }
                 }
@@ -40,7 +45,7 @@ namespace helper{
                 cout << rslt[i][j] << "\t";
             }
     
-            cout << endl;
+            cout << std::endl;
         } 
 
 };
